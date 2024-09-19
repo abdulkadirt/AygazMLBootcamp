@@ -1,52 +1,52 @@
 
 # Machine Learning with US Airline Flight Routes and Fares 1993-2024 Dataset Supervised-and-Unsupervised-Algorithm
 
-## Projenin Amacı:
-Bu proje havayolu firmalarının fiyatlandırmayı optimize etmesine ve rotaları daha etkili bir şekilde planlamasına yardımcı olmayı amaçlıyoruz. 
+##  Aim of the Project :
+This project aims to help airlines optimize pricing and plan routes more effectively. 
 
 
-**Projenin EDA kısmının bulunduğu kaggle notebook**
+**Kaggle notebook with the EDA part of the project**
 *  --> https://www.kaggle.com/code/akadir0223/flights-eda
 
-**Projenin kısa bir veri analiziyle birlikte model oluşturma kısmının bulundauğu kaggle notebook**
+**Kaggle notebook with a short data analysis and model building part of the project**
 *  --> https://www.kaggle.com/code/akadir0223/flights-fare-prediction
 
-## Veri Seti
-Kullanılan dataset, 245,955 satır and 23 sütundan oluşmaktadır. Sütunlar sırasıyla şu şekilde:
+## Dataset : 
+The dataset used consists of 245,955 rows and 23 columns. The columns are respectively as follows:
 
-- **tbl**: Tablo kimliği
-- **Year**: Veri kaydının yılı
-- **quarter**: Yılın çeyreği (1-4)
-- **citymarketid_1**: Kalkış şehir pazar kimliği
-- **citymarketid_2**: Varış şehir pazar kimliği
-- **city1**: Kalkış şehri adı
-- **city2**: Varış şehri adı
-- **airportid_1**: Kalkış havaalanı kimliği
-- **airportid_2**: Varış havaalanı kimliği
-- **airport_1**: Kalkış havaalanı kodu
-- **airport_2**: Varış havaalanı kodu
-- **nsmiles**: Havaalanları arasındaki mesafe (mil cinsinden)
-- **passengers**: Yolcu sayısı
-- **fare**: Ortalama bilet fiyatı
-- **carrier_lg**: En fazla yolcusu olan hava yolu kodu
-- **large_ms**: En büyük taşıyıcının pazar payı
-- **fare_lg**: En büyük taşıyıcının ortalama bileti
-- **carrier_low**: En düşük bilet fiyatına sahip hava yolu kodu
-- **lf_ms**: En düşük bilet fiyatına sahip taşıyıcının pazar payı
-- **fare_low**: En düşük bilet fiyatı
-- **Geocoded_City1**: Kalkış şehri için coğrafi koordinatlar
-- **Geocoded_City2**: Varış şehri için coğrafi koordinatlar
-- **tbl1apk**: Rota için benzersiz kimlik
+- **tbl**: Table identifier
+- **Year**: Year of the data record
+- **quarter**: Quarter of the year (1-4)
+- **citymarketid_1**: Origin city market ID
+- **citymarketid_2**: Destination city market ID
+- **city1**: Origin city name
+- **city2**: Destination city name
+- **airportid_1**: Origin airport ID
+- **airportid_2**: Destination airport ID
+- **airport_1**: Origin airport code
+- **airport_2**: Destination airport code
+- **nsmiles**: Distance between airports in miles
+- **passengers**: Number of passengers
+- **fare**: Average fare
+- **carrier_lg**: Code for the largest carrier by passengers
+- **large_ms**: Market share of the largest carrier
+- **fare_lg**: Average fare of the largest carrier
+- **carrier_low**: Code for the lowest fare carrier
+- **lf_ms**: Market share of the lowest fare carrier
+- **fare_low**: Lowest fare
+- **Geocoded_City1**: Geocoded coordinates for the origin city
+- **Geocoded_City2**: Geocoded coordinates for the destination city
+- **tbl1apk**: Unique identifier for the route
 ----
 
-bağımlı değişken "fare" olarak belirlenmiştir.
-Çeşitli algoritmalar kullanılmaya çalışlıarak "fare" değeri tahmin edilmeye çalışılmıştır.
-Sonradan silinmiş olsa da tüm regresyon algoritmaları denenmiş en sonunda RandomForestRegressor() en iyi çalışan algoritma olduğu için onunla devam edilmiştir.
-Unsupervised Learning algoritmalarından KMeans kullanılmıştır.
+The dependent variable was determined as “ fare”.
+Various algorithms were used to predict the value of “ fare”.
+Although it was deleted later, all regression algorithms were tried and finally RandomForestRegressor() was the best working algorithm, so it was continued with it.
+KMeans, one of the Unsupervised Learning algorithms, was used.
 
-model skoru hiperparametre optimizasyonu yapılarak geliştirilmiştir.
+The model score was improved by hyperparameter optimization.
 
-Değerlendirme sonucu RandomForestRegressor için aşağıdaki gibidir : 
+The evaluation result for RandomForestRegressor is as follows : 
 ----
 
 **Model Performance**
@@ -57,20 +57,20 @@ Değerlendirme sonucu RandomForestRegressor için aşağıdaki gibidir :
 * R² Score: 0.843834237560804
 * sonuçlar optimizasyon sonrası bu hale gelmiştir.
 ---
-KMeans için elde edilen skorlar aşağıdaki gibidir : 
+The scores obtained for KMeans are as follows : 
 ---
-* Aşağıdaki Performans metrikleri, kümelerin kalitesini ölçer. Kümeleme performansına dair metrikler yani : 
-*  Silhouette Score for 4 clusters: 0.46371227067631293
+* The following Performance metrics measure the quality of clusters. Metrics on clustering performance i.e. : 
+* Silhouette Score for 4 clusters: 0.46371227067631293
 * Davies-Bouldin Index for 4 clusters: 0.7062882332826151
 ---
 
-### Sonuçların Değerlendirilmesi
+### Evaluation of Results
 **RondomForest**
-* model %91 doğrulukla tahmin yapıyor.Bu, modelin tahminlerinin büyük bir kısmının gerçek değerlere oldukça yakın olduğunu gösterir.
-* 0.8438'lik bir R² skoru, modelin hedef değişkenin %84.38'ini açıkladığını gösterir. Yani, model veriye dayalı güçlü bir tahmin gücüne sahiptir.
+* The model predicts with 91% accuracy, indicating that most of the model's predictions are quite close to the true values.
+* An R² score of 0.8438 indicates that the model explains 84.38% of the target variable. That is, the model has a strong predictive power based on the data.
 
 
-## Algoritmalar arasındaki Başarı Farkına Dair Yorum
-K-Means algoritması kümeleme için tasarlanmış bir algoritmadır ve regresyon problemlerinde doğrudan kullanılmaz. Kümeleme algoritmaları, veri noktalarını kümelere ayırmaya yönelik olup, sürekli bir hedef değişkenin tahmininde zayıf performans sergiler. Bu nedenle, K-Means ile ortalama bilet fiyatı gibi sayısal bir değeri tahmin etmek uygun bir yaklaşım değildir.
+## Comment on The Success Difference Between Algorithms
+The K-Means algorithm is designed for clustering and is not directly used in regression problems. Clustering algorithms, which aim to partition data points into clusters, perform poorly when estimating a continuous target variable. Therefore, K-Means is not a suitable approach to predict a numerical value such as the average ticket price.
 
-Ancak KMeans gibi Unsupervised ML algoritmaları özellik seçimi konusunda regresyon problemlerinde dolaylı olarak kullanılırlar. BU çalışmada başarısız olmuş olması regresyon problemleri için tamamen önemsiz olduğu anlamına gelmez.
+However, Unsupervised ML algorithms such as KMeans are indirectly used in regression problems for feature selection. The fact that it failed in this study does not mean that it is completely irrelevant for regression problems.
