@@ -62,6 +62,9 @@ The scores obtained for KMeans are as follows :
 * The following Performance metrics measure the quality of clusters. Metrics on clustering performance i.e. : 
 * Silhouette Score for 4 clusters: 0.46371227067631293
 * Davies-Bouldin Index for 4 clusters: 0.7062882332826151
+* Result Image :
+![image](https://github.com/user-attachments/assets/98788ae0-0b0c-4883-92a4-1d8178e93281)
+
 ---
 
 ### Evaluation of Results
